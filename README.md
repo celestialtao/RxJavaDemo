@@ -9,7 +9,7 @@
 UI(通用)
 
 
-##微软响应式扩展 
+## 微软响应式扩展 
 * 函数响应编程
 * 微软RX
 
@@ -71,17 +71,17 @@ UI(通用)
 
 ## observable错误操作符：
 
-####Catch: 根据不同的操作符进行相应的异常发生时的数据项发射操作
+#### Catch: 根据不同的操作符进行相应的异常发生时的数据项发射操作
        1.onErrorReturn：指示Observable在发生异常时发射一特定的数据项，并正常终止
        2.onErrorResumeNext：指示Observable在发射异常时发射第二个Observable序列
        3.onExceptionResumeNext：指示Observable在发射异常时继续发射数据项，并能获取到异常类型
-####Retry: 在数据源发生异常时，重试订阅，即执行subscribe方法
+#### Retry: 在数据源发生异常时，重试订阅，即执行subscribe方法
        1.Retry：指异常发生时，进行重试订阅，不记录异常
        2.RetryWhen:指异常发生时，进行重试订阅，并记录异常，通过操作符的时间
                    参数，延迟一个时间后再发送异常
 
 
-##非阻塞I/O操作
+## 非阻塞I/O操作
 
 ### 一、图片保存
 
@@ -112,11 +112,11 @@ UI(通用)
 Schedulers是RxJava以一种较简洁的方法解决多线程问题的机制
 
 ### 二、Schedulers种类
-- .io():用于I/O操作
-- .computation():用于计算操作，例如buffer,debounce()等
-- .immediate():允许在当前线程执行指定的工作，如timeout(),timeInterval()
-- .newThread():指定任务启动一个新线程
-- .trampoline():将会按序处理队列，并运行队列中每一个任务，如repeat()，retry()
+-  .io():用于I/O操作
+-  .computation():用于计算操作，例如buffer,debounce()等
+-  .immediate():允许在当前线程执行指定的工作，如timeout(),timeInterval()
+-  .newThread():指定任务启动一个新线程
+-  .trampoline():将会按序处理队列，并运行队列中每一个任务，如repeat()，retry()
  
 ### 三、什么是AndroidSchedulers
 AndroidSchedulers是RxAndroid库提供在安卓平台的调度器(指定观察者在主线程)
