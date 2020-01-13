@@ -144,5 +144,9 @@ AndroidSchedulers是RxAndroid库提供在安卓平台的调度器(指定观察�
        .observeOn(AndroidSchedulers.mainThread())指定数据返回在主线程上
        .subscribe(subscriber)
     
-
+## 示例的使用
+* 在src文件夹下包含三个java类，HelloWorld,TestCombining,TestFiltering
+* HellWorld包含的是observable创建和转换操作符的使用示例
+* TestCombining包含的是observable组合操作符的使用示例
+* TestFiltering包含的是observable过滤操作符的使用示例
 
