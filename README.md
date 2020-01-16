@@ -143,10 +143,36 @@ AndroidSchedulers是RxAndroid库提供在安卓平台的调度器(指定观察�
        .subscribeOn(Schedulers.io())指定网络请求在io线程上
        .observeOn(AndroidSchedulers.mainThread())指定数据返回在主线程上
        .subscribe(subscriber)
+
+## 背压-Backpressure
+（*参考 作者：拉丁吴 链接：https://juejin.im/post/582d413c8ac24700619cceed*）
+
+* 定义：背亚是指在异步环境中，被观察者发送事件的速度远大于观察者处理事件的速度的情况下，一种指示上游被观察者降低发送事件速度的策略，即背亚是流速控制的一种策略
+* 响应式拉取：与R下Java本身概念相别，指观察者主动从被观察者那里取拉取数据，而被观察者变成被动的等待通知再发送数据，如下图所示
+![](https://user-gold-cdn.xitu.io/2018/3/31/1627a7f426088d78?imageslim)
+
+* 流速控制相关的操作符：
+>
+1.  过滤：如Sample，ThrottleFirst.... 
+1.  缓存：buffer，window...
+1.  两个特殊的操作符：onBackpressurebuffer，onBackpressureDrop
+    - **onBackpressurebuffer**：把observable发送出来的事件做缓存，当request方法被调用的时候，给下层流发送一个item(如果给这个缓存区设置了大小，那么超过了这个大小就会抛出异常)。
+    - **onBackpressureDrop**：将observable发送的事件抛弃掉，直到subscriber再次调用request（n）方法的时候，就发送给它这之后的n个事件。
+
+
+
+* 需要掌握的概念：
+>  
+1. 背压是一种策略，具体措施是下游观察者通知上游的被观察者发送事件(通过响应式拉取)
+1. 背压策略很好的解决了异步环境下被观察者和观察者速度不一致的问题
+1. RxJava1.X中，同样是Observable，有的不支持背压策略，导致某些情况下，显得特别麻烦，出了问题也很难排查，使得RxJava的学习曲线变得十份陡峭。
+
+
     
 ## 示例的使用
 * 在src文件夹下包含三个java类，HelloWorld,TestCombining,TestFiltering
 * HellWorld包含的是observable创建和转换操作符的使用示例
 * TestCombining包含的是observable组合操作符的使用示例
 * TestFiltering包含的是observable过滤操作符的使用示例
+* 
 
